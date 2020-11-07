@@ -55,13 +55,6 @@
     </div>
 
 
-
-
-
-
-    
-
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
@@ -89,9 +82,27 @@
                 })
     
                     .then(function (response) {
-    
-    
                         console.log(response);
+    
+                        
+          var results = response.data;
+
+          for (var i = 0; i < results.length; i++) {        
+            
+
+            var rating = results[i].rating;
+
+            var p = $("<p>").text("Rating: " + rating);
+
+            var personImage = $("<img>");
+            personImage.attr("src", results[i].images.fixed_height.url);
+
+            gifDiv.prepend(p);
+            gifDiv.prepend(personImage);
+
+            $("#gifs-appear-here").prepend(gifDiv);
+          }
+        });
     
                         
     
@@ -101,7 +112,7 @@
     
                     });
     
-            })
+            
     
     
     
